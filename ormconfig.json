@@ -1,0 +1,25 @@
+{
+   "type": "mysql",
+   "host": "0.0.0.0",
+   "port": 3360,
+   "username": "root",
+   "password": "",
+   "database": "mm_chat",
+   "synchronize": false,
+   "logging": false,
+   "migrationsTableName": "mm_chat_migrations",
+   "entities": [
+      "src/contexts/mmc/**/domain/entity/*.ts"
+   ],
+   "migrations": [
+      "migrations/*.ts"
+   ],
+   "subscribers": [
+      "subscribers/*.ts"
+   ],
+   "cli": {
+      "entitiesDir": "src/contexts/mmc/**/domain/entity",
+      "migrationsDir": "migrations",
+      "subscribersDir": "subscribers"
+   }
+}
