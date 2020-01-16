@@ -1,6 +1,6 @@
 import {User}         from '../domain/entity/User';
 import UserRepository from '../domain/UserRepository';
-import UserDto        from '../domain/UserDto';
+import UserCreateDto  from '../domain/dto/UserCreateDto';
 
 export default class UserCreate
 {
@@ -11,12 +11,16 @@ export default class UserCreate
         this.repository = repository;
     }
 
-    async run(userDto: UserDto): Promise<User>
+    async run(userDto: UserCreateDto): Promise<User>
     {
         const user: User = new User();
         user.username    = userDto.username;
         user.password    = userDto.password;
         user.role        = userDto.role;
+        user.email       = userDto.email;
+        user.firstName   = userDto.firstName;
+        user.lastName    = userDto.lastName;
+        user.isActive    = userDto.isActive;
 
         user.hashPassword();
 

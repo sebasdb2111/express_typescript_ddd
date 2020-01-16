@@ -9,7 +9,231 @@
 			"name": "users",
 			"item": [
 				{
-					"name": "UserCreate",
+					"name": "User Create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiYWluaG9hIiwiaWF0IjoxNTc5MTgxMTE5LCJleHAiOjE1NzkxODQ3MTl9.YF7KQ8KN0sFTsfiYYGceCqrq-hzwme6ER601kS9PR2o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "sebas_diez",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "sebas_diez",
+									"type": "text"
+								},
+								{
+									"key": "role",
+									"value": "ADMIN",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "sebas_diez@sebas_diez.com",
+									"type": "text"
+								},
+								{
+									"key": "firstName",
+									"value": "Sebastian",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Diez",
+									"type": "text"
+								},
+								{
+									"key": "isActive",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Get",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiYWluaG9hIiwiaWF0IjoxNTc5MTgxMTE5LCJleHAiOjE1NzkxODQ3MTl9.YF7KQ8KN0sFTsfiYYGceCqrq-hzwme6ER601kS9PR2o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "http://localhost:3000/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Deactivate",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiYWluaG9hIiwiaWF0IjoxNTc5MTgxMTE5LCJleHAiOjE1NzkxODQ3MTl9.YF7KQ8KN0sFTsfiYYGceCqrq-hzwme6ER601kS9PR2o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "isActive",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/1/deactivate",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"1",
+								"deactivate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Edit",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiYWluaG9hIiwiaWF0IjoxNTc5MTgxMTE5LCJleHAiOjE1NzkxODQ3MTl9.YF7KQ8KN0sFTsfiYYGceCqrq-hzwme6ER601kS9PR2o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "firstName",
+									"value": "Ainhoa",
+									"type": "text"
+								},
+								{
+									"key": "lastName",
+									"value": "Rodriguez",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "Auth Login",
 					"request": {
 						"method": "POST",
 						"header": [
@@ -30,18 +254,13 @@
 								},
 								{
 									"key": "password",
-									"value": "ainhoa",
-									"type": "text"
-								},
-								{
-									"key": "role",
-									"value": "CUSTOMER",
+									"value": "ainhoa_ainhoa",
 									"type": "text"
 								}
 							]
 						},
 						"url": {
-							"raw": "http://localhost:3000/api/users/",
+							"raw": "http://localhost:3000/api/auth/login",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -49,8 +268,67 @@
 							"port": "3000",
 							"path": [
 								"api",
-								"users",
-								""
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Auth Change Password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiYWluaG9hIiwiaWF0IjoxNTc5MTgxMTE5LCJleHAiOjE1NzkxODQ3MTl9.YF7KQ8KN0sFTsfiYYGceCqrq-hzwme6ER601kS9PR2o",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "auth",
+								"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsInVzZXJuYW1lIjoiYWluaG9hIiwiaWF0IjoxNTc5MTc2MjI3LCJleHAiOjE1NzkxNzk4Mjd9.QjAly5iUjg0HIloE0Z5jGHGuNj9IRvc748FUKLtdRPE",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "ainhoa",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "ainhoa_ainhoa",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:3000/api/auth/change-password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"api",
+								"auth",
+								"change-password"
 							]
 						}
 					},

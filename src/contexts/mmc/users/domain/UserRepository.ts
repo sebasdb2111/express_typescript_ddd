@@ -7,4 +7,10 @@ export default interface UserRepository
     findOneByUsername(username: string): Promise<User>;
 
     save(user: User): Promise<User>;
+
+    update(user: User): Promise<User>;
+
+    updateIsActivate(id: number, user: User): Promise<void>;
+
+    updatePassword(id: number, user: User): Promise<void>;
 }

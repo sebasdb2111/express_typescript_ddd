@@ -2,7 +2,7 @@ import UserRepository from '../../users/domain/UserRepository';
 import * as jwt       from 'jsonwebtoken';
 import {User}         from '../../users/domain/entity/User';
 import config         from '../../../../apps/mmc/config/config';
-import AuthLoginDto   from '../domain/AuthLoginDto';
+import AuthLoginDto   from '../domain/dto/AuthLoginDto';
 
 export default class AuthLogin
 {

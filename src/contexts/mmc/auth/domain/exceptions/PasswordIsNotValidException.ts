@@ -1,7 +1,7 @@
 export default class PasswordIsNotValidException extends Error
 {
-    constructor()
+    constructor(username: string)
     {
-        super(`The password in not valid`);
+        super(`The password in not valid for the username: ${username}`);
     }
 }

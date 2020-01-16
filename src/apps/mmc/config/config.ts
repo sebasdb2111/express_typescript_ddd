@@ -1,3 +1,3 @@
 export default {
-  jwtSecret: '@SEBAS10_MMCHAT'
+    jwtSecret: '@SEBAS10_MMCHAT'
 };

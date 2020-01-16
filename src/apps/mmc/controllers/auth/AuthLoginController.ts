@@ -2,7 +2,7 @@ import {Request, Response}         from 'express';
 import AuthLogin                   from '../../../../contexts/mmc/auth/application/AuthLogin';
 import * as httpStatus             from 'http-status';
 import Controller                  from '../Controller';
-import AuthLoginDto                from '../../../../contexts/mmc/auth/domain/AuthLoginDto';
+import AuthLoginDto                from '../../../../contexts/mmc/auth/domain/dto/AuthLoginDto';
 import PasswordIsNotValidException from '../../../../contexts/mmc/auth/domain/exceptions/PasswordIsNotValidException';
 
 

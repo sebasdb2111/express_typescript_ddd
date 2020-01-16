@@ -1,33 +1,84 @@
 services:
-  #########
+  ##########
   # SHARED
-  #########
+  ##########
   Mmc.shared.Logger:
     class: ../../../../contexts/shared/infrastructure/WinstonLogger
     arguments: []
 
-  #########
-  # USERS
-  #########
+  ##############################
+  ########## USERS
+  ##############################
   Mmc.users.UserRepository:
     class: ../../../../contexts/mmc/users/infrastructure/TypeormUserRepository
     arguments: []
 
+  #***********
+  # Create
+  #***********
   Mmc.users.UserCreate:
     class: ../../../../contexts/mmc/users/application/UserCreate
-    arguments: ["@Mmc.users.UserRepository"]
+    arguments: ['@Mmc.users.UserRepository']
 
   Apps.mmc.controllers.user.UserCreateController:
     class: ../../controllers/user/UserCreateController
-    arguments: ["@Mmc.users.UserCreate"]
+    arguments: ['@Mmc.users.UserCreate']
 
-  #########
-  # AUTH
-  #########
+  #***********
+  # Get
+  #***********
+  Mmc.users.UserGet:
+      class: ../../../../contexts/mmc/users/application/UserGet
+      arguments: ['@Mmc.users.UserRepository']
+
+  Apps.mmc.controllers.user.UserGetController:
+    class: ../../controllers/user/UserGetController
+    arguments: ['@Mmc.users.UserGet']
+
+  #***********
+  # Edit
+  #***********
+  Mmc.users.UserEdit:
+      class: ../../../../contexts/mmc/users/application/UserEdit
+      arguments: ['@Mmc.users.UserRepository']
+
+  Apps.mmc.controllers.user.UserEditController:
+    class: ../../controllers/user/UserEditController
+    arguments: ['@Mmc.users.UserEdit']
+
+  #***********
+  # Deactivate
+  #***********
+  Mmc.users.UserDeactivate:
+      class: ../../../../contexts/mmc/users/application/UserDeactivate
+      arguments: ['@Mmc.users.UserRepository']
+
+  Apps.mmc.controllers.user.UserDeactivateController:
+    class: ../../controllers/user/UserDeactivateController
+    arguments: ['@Mmc.users.UserDeactivate']
+
+  ##############################
+  ########## AUTH
+  ##############################
+
+  #***********
+  # Login
+  #***********
   Mmc.auth.AuthLogin:
     class: ../../../../contexts/mmc/auth/application/AuthLogin
-    arguments: ["@Mmc.users.UserRepository"]
+    arguments: ['@Mmc.users.UserRepository']
 
   Apps.mmc.controllers.auth.AuthLoginController:
     class: ../../controllers/auth/AuthLoginController
-    arguments: ["@Mmc.auth.AuthLogin"]
+    arguments: ['@Mmc.auth.AuthLogin']
+
+  #***********
+  # Change Password
+  #***********
+  Mmc.auth.AuthChangePassword:
+    class: ../../../../contexts/mmc/auth/application/AuthChangePassword
+    arguments: ['@Mmc.users.UserRepository']
+
+  Apps.mmc.controllers.auth.AuthChangePasswordController:
+    class: ../../controllers/auth/AuthChangePasswordController
+    arguments: ['@Mmc.auth.AuthChangePassword']

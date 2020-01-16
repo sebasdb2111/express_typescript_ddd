@@ -4,10 +4,10 @@
    "port": 3360,
    "username": "root",
    "password": "",
-   "database": "mm_chat",
+   "database": "example_db",
    "synchronize": false,
    "logging": false,
-   "migrationsTableName": "mm_chat_migrations",
+   "migrationsTableName": "example_db_migrations",
    "entities": [
       "src/contexts/mmc/**/domain/entity/*.ts"
    ],
