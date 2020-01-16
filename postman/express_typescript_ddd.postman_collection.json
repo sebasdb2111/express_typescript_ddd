@@ -1,7 +1,7 @@
 {
 	"info": {
-		"_postman_id": "7b6be69e-6676-4e3c-a8ab-5b17ca0e8e38",
-		"name": "mm_chat",
+		"_postman_id": "38807c36-16bf-4017-940a-523aa6b9e687",
+		"name": "express_typescript_ddd",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
