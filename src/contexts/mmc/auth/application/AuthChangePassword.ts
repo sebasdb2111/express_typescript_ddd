@@ -4,20 +4,21 @@ import AuthChangePasswordDto from '../domain/dto/AuthChangePasswordDto';
 
 export default class AuthChangePassword
 {
-    private repository: UserRepository;
+	private repository: UserRepository;
 
-    constructor(repository: UserRepository)
-    {
-        this.repository = repository;
-    }
+	constructor(repository: UserRepository)
+	{
+		this.repository = repository;
+	}
 
-    async run(authChangePasswordDto: AuthChangePasswordDto): Promise<void>
-    {
-        const user: User = await this.repository.findOneByUsername(authChangePasswordDto.username);
-        user.password    = authChangePasswordDto.password;
+	async run(authChangePasswordDto: AuthChangePasswordDto): Promise<void>
+	{
+		const user: User = await this.repository.findOneByUsername(authChangePasswordDto.username);
+		user.password    = authChangePasswordDto.password;
 
-        user.hashPassword();
+		user.hashPassword();
 
-        await this.repository.updatePassword(user.id, user);
-    }
+		const passwordUpdated: void = await this.repository.updatePassword(user.id, user);
+		return Promise.resolve(passwordUpdated);
+	}
 }

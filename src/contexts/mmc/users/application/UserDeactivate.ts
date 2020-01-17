@@ -5,20 +5,22 @@ import UserNotExistGuard from '../../shared/application/UserNotExistGuard';
 
 export default class UserCreate
 {
-    private repository: UserRepository;
+	private repository: UserRepository;
 
-    constructor(repository: UserRepository)
-    {
-        this.repository = repository;
-    }
+	constructor(repository: UserRepository)
+	{
+		this.repository = repository;
+	}
 
-    async run(userDeactivateDto: UserDeactivateDto): Promise<void>
-    {
-        const user: User = await this.repository.findOneOrFail(userDeactivateDto.id);
-        user.isActive    = userDeactivateDto.isActive;
+	async run(userDeactivateDto: UserDeactivateDto): Promise<void>
+	{
+		const user: User = await this.repository.findOneOrFail(userDeactivateDto.id);
+		user.isActive    = userDeactivateDto.isActive;
 
-        await new UserNotExistGuard(userDeactivateDto.id, user);
+		await new UserNotExistGuard(userDeactivateDto.id, user);
 
-        return this.repository.updateIsActivate(userDeactivateDto.id, user);
-    }
+		const userDeactivated = await this.repository.updateIsActive(userDeactivateDto.id, user);
+
+		return Promise.resolve(userDeactivated);
+	}
 }

@@ -4,19 +4,19 @@ import UserNotExistGuard from "../../shared/application/UserNotExistGuard";
 
 export default class UserCreate
 {
-    private repository: UserRepository;
+	private repository: UserRepository;
 
-    constructor(repository: UserRepository)
-    {
-        this.repository = repository;
-    }
+	constructor(repository: UserRepository)
+	{
+		this.repository = repository;
+	}
 
-    async run(userId: number): Promise<User>
-    {
-        const user: User = await this.repository.findOneOrFail(userId);
+	async run(userId: number): Promise<User>
+	{
+		const user: User = await this.repository.findOneOrFail(userId);
 
-        await new UserNotExistGuard(userId, user);
+		await new UserNotExistGuard(userId, user);
 
-        return user;
-    }
+		return Promise.resolve(user);
+	}
 }
