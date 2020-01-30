@@ -1,5 +1,8 @@
 # Project developed with Express, Typescript, TypeORM and DDD.
 
+## This is a simple api rest to get, create, edit and deactivate (not delete) users, all this developed with hexagonal architecture, ddd, Express, typescript and TypeORM.
+```
+
 Steps to run this project:
 
 1. Run `npm i` command
