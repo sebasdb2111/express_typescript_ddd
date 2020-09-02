@@ -1,42 +1,42 @@
 import {getRepository} from 'typeorm';
-import {User}          from '../domain/entity/User';
-import UserRepository  from '../domain/UserRepository';
+import {UserMySqlEntity}          from '../domain/entity/UserMySqlEntity';
+import IUserMySqlRepository  from '../domain/IUserMySqlRepository';
 
-export default class TypeormUserRepository implements UserRepository
+export default class TypeormUserRepository implements IUserMySqlRepository
 {
-    async findOneOrFail(id: number): Promise<User>
+    async findOneOrFail(id: number): Promise<UserMySqlEntity>
     {
-        const userRepository = getRepository(User);
+        const userRepository = getRepository(UserMySqlEntity);
         return await userRepository.findOneOrFail(id);
     }
 
-    async findOneByUsername(username: string): Promise<User>
+    async findOneByUsername(username: string): Promise<UserMySqlEntity>
     {
-        const userRepository = getRepository(User);
+        const userRepository = getRepository(UserMySqlEntity);
         return await userRepository.findOneOrFail({where: {username}});
     }
 
-    async save(user: User): Promise<User>
+    async save(user: UserMySqlEntity): Promise<UserMySqlEntity>
     {
-        const userRepository = getRepository(User);
+        const userRepository = getRepository(UserMySqlEntity);
         return await userRepository.save(user);
     }
 
-    async update(user: User): Promise<User>
+    async update(user: UserMySqlEntity): Promise<UserMySqlEntity>
     {
-        const userRepository = getRepository(User);
+        const userRepository = getRepository(UserMySqlEntity);
         return await userRepository.save(user);
     }
 
-    async updateIsActivate(id: number, user: User): Promise<void>
+    async updateIsActivate(id: number, user: UserMySqlEntity): Promise<void>
     {
-        const userRepository = getRepository(User);
+        const userRepository = getRepository(UserMySqlEntity);
         await userRepository.update(id, {isActive: user.isActive});
     }
 
-    async updatePassword(id: number, user: User): Promise<void>
+    async updatePassword(id: number, user: UserMySqlEntity): Promise<void>
     {
-        const userRepository = getRepository(User);
+        const userRepository = getRepository(UserMySqlEntity);
         await userRepository.update(id, {password: user.password});
     }
 }

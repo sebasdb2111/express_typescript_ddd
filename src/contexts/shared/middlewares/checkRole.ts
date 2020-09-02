@@ -1,7 +1,7 @@
 import {Request, Response, NextFunction} from 'express';
 import {getRepository}                   from 'typeorm';
 
-import {User} from '../../mmc/users/domain/entity/User';
+import {UserMySqlEntity} from '../../mmc/users/domain/entity/UserMySqlEntity';
 
 export const checkRole = (roles: Array<string>) =>
 {
@@ -9,8 +9,8 @@ export const checkRole = (roles: Array<string>) =>
     {
         const id = res.locals.jwtPayload.userId;
 
-        const userRepository = getRepository(User);
-        let user: User;
+        const userRepository = getRepository(UserMySqlEntity);
+        let user: UserMySqlEntity;
 
         try {
             user = await userRepository.findOneOrFail(id);

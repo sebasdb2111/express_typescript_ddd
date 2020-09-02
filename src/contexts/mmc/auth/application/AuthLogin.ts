@@ -1,28 +1,28 @@
-import UserRepository from '../../users/domain/UserRepository';
+import IUserMySqlRepository from '../../users/domain/IUserMySqlRepository';
 import * as jwt       from 'jsonwebtoken';
-import {User}         from '../../users/domain/entity/User';
+import {UserMySqlEntity}         from '../../users/domain/entity/UserMySqlEntity';
 import config         from '../../../../apps/mmc/config/config';
 import AuthLoginDto   from '../domain/dto/AuthLoginDto';
 
 export default class AuthLogin
 {
-    private repository: UserRepository;
+    private repository: IUserMySqlRepository;
 
-    constructor(repository: UserRepository)
+    constructor(repository: IUserMySqlRepository)
     {
         this.repository = repository;
     }
 
     async run(authLoginDto: AuthLoginDto): Promise<string>
     {
-        const user: User = await this.repository.findOneByUsername(authLoginDto.username);
+        const user: UserMySqlEntity = await this.repository.findOneByUsername(authLoginDto.username);
 
         user.checkIfUnencryptedPasswordIsValid(authLoginDto.password);
 
         return this.createJwt(user);
     }
 
-    async createJwt(user: User): Promise<string>
+    async createJwt(user: UserMySqlEntity): Promise<string>
     {
         return jwt.sign(
             {userId: user.id, username: user.username},

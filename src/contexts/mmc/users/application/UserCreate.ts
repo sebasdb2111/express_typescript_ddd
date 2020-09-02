@@ -1,19 +1,19 @@
-import {User}         from '../domain/entity/User';
-import UserRepository from '../domain/UserRepository';
+import {UserMySqlEntity}         from '../domain/entity/UserMySqlEntity';
+import IUserMySqlRepository from '../domain/IUserMySqlRepository';
 import UserCreateDto  from '../domain/dto/UserCreateDto';
 
 export default class UserCreate
 {
-    private repository: UserRepository;
+    private repository: IUserMySqlRepository;
 
-    constructor(repository: UserRepository)
+    constructor(repository: IUserMySqlRepository)
     {
         this.repository = repository;
     }
 
-    async run(userDto: UserCreateDto): Promise<User>
+    async run(userDto: UserCreateDto): Promise<UserMySqlEntity>
     {
-        const user: User = new User();
+        const user: UserMySqlEntity = new UserMySqlEntity();
         user.username    = userDto.username;
         user.password    = userDto.password;
         user.role        = userDto.role;

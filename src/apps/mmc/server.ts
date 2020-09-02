@@ -7,6 +7,8 @@ import * as helmet            from 'helmet';
 import * as cors              from 'cors';
 import routes                 from './routes/index';
 import * as errorHandler      from 'errorhandler';
+import * as mongoose from 'mongoose';
+
 
 export class server
 {
@@ -37,11 +39,19 @@ export class server
 
     private listen(): void
     {
+		const MONGO_URI = 'mongodb://localhost:27117/todo';
         this.server.listen(this.port, () =>
         {
             createConnection()
                 .then(async connection =>
                 {
+					mongoose.connect(MONGO_URI, { useNewUrlParser: true });
+					mongoose.connection.once('open', () => {
+						console.log('Connected to Mongo via Mongoose');
+					});
+					mongoose.connection.on('error', (err) => {
+						console.error('Unable to connect to Mongo via Mongoose', err);
+					});
                     console.log(
                         `  App is running at http://localhost:${
                             this.port

@@ -13,7 +13,7 @@ import {UserRoleEnum}                                   from '../UserRoleEnum';
 
 @Entity()
 @Unique(['username', 'email'])
-export class User
+export class UserMySqlEntity
 {
     @PrimaryGeneratedColumn()
     id: number;

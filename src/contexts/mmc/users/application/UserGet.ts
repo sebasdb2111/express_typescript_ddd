@@ -1,19 +1,19 @@
-import {User}            from '../domain/entity/User';
-import UserRepository    from '../domain/UserRepository';
+import {UserMySqlEntity}            from '../domain/entity/UserMySqlEntity';
+import IUserMySqlRepository    from '../domain/IUserMySqlRepository';
 import UserNotExistGuard from "../../shared/application/UserNotExistGuard";
 
 export default class UserCreate
 {
-    private repository: UserRepository;
+    private repository: IUserMySqlRepository;
 
-    constructor(repository: UserRepository)
+    constructor(repository: IUserMySqlRepository)
     {
         this.repository = repository;
     }
 
-    async run(userId: number): Promise<User>
+    async run(userId: number): Promise<UserMySqlEntity>
     {
-        const user: User = await this.repository.findOneOrFail(userId);
+        const user: UserMySqlEntity = await this.repository.findOneOrFail(userId);
 
         await new UserNotExistGuard(userId, user);
 

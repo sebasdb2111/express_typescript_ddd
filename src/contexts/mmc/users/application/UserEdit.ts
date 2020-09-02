@@ -1,5 +1,5 @@
-import {User}                           from '../domain/entity/User';
-import UserRepository                   from '../domain/UserRepository';
+import {UserMySqlEntity}                           from '../domain/entity/UserMySqlEntity';
+import IUserMySqlRepository                   from '../domain/IUserMySqlRepository';
 import UserCreateDto                    from '../domain/dto/UserCreateDto';
 import UserEditDto                      from "../domain/dto/UserEditDto";
 import {isNullOrUndefined, isUndefined} from "util";
@@ -7,16 +7,16 @@ import UserNotExistGuard                from "../../shared/application/UserNotEx
 
 export default class UserCreate
 {
-    private repository: UserRepository;
+    private repository: IUserMySqlRepository;
 
-    constructor(repository: UserRepository)
+    constructor(repository: IUserMySqlRepository)
     {
         this.repository = repository;
     }
 
-    async run(userEditDto: UserEditDto): Promise<User>
+    async run(userEditDto: UserEditDto): Promise<UserMySqlEntity>
     {
-        const user: User = await this.repository.findOneOrFail(userEditDto.id);
+        const user: UserMySqlEntity = await this.repository.findOneOrFail(userEditDto.id);
 
         await new UserNotExistGuard(userEditDto.id, user);
 

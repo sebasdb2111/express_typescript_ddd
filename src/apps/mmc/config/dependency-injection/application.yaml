@@ -9,7 +9,7 @@ services:
   ##############################
   ########## USERS
   ##############################
-  Mmc.users.UserRepository:
+  Mmc.users.IUserMySqlRepository:
     class: ../../../../contexts/mmc/users/infrastructure/TypeormUserRepository
     arguments: []
 
@@ -18,7 +18,7 @@ services:
   #***********
   Mmc.users.UserCreate:
     class: ../../../../contexts/mmc/users/application/UserCreate
-    arguments: ['@Mmc.users.UserRepository']
+    arguments: ['@Mmc.users.IUserMySqlRepository']
 
   Apps.mmc.controllers.user.UserCreateController:
     class: ../../controllers/user/UserCreateController
@@ -29,7 +29,7 @@ services:
   #***********
   Mmc.users.UserGet:
       class: ../../../../contexts/mmc/users/application/UserGet
-      arguments: ['@Mmc.users.UserRepository']
+      arguments: ['@Mmc.users.IUserMySqlRepository']
 
   Apps.mmc.controllers.user.UserGetController:
     class: ../../controllers/user/UserGetController
@@ -40,7 +40,7 @@ services:
   #***********
   Mmc.users.UserEdit:
       class: ../../../../contexts/mmc/users/application/UserEdit
-      arguments: ['@Mmc.users.UserRepository']
+      arguments: ['@Mmc.users.IUserMySqlRepository']
 
   Apps.mmc.controllers.user.UserEditController:
     class: ../../controllers/user/UserEditController
@@ -51,7 +51,7 @@ services:
   #***********
   Mmc.users.UserDeactivate:
       class: ../../../../contexts/mmc/users/application/UserDeactivate
-      arguments: ['@Mmc.users.UserRepository']
+      arguments: ['@Mmc.users.IUserMySqlRepository']
 
   Apps.mmc.controllers.user.UserDeactivateController:
     class: ../../controllers/user/UserDeactivateController
@@ -66,7 +66,7 @@ services:
   #***********
   Mmc.auth.AuthLogin:
     class: ../../../../contexts/mmc/auth/application/AuthLogin
-    arguments: ['@Mmc.users.UserRepository']
+    arguments: ['@Mmc.users.IUserMySqlRepository']
 
   Apps.mmc.controllers.auth.AuthLoginController:
     class: ../../controllers/auth/AuthLoginController
@@ -77,7 +77,7 @@ services:
   #***********
   Mmc.auth.AuthChangePassword:
     class: ../../../../contexts/mmc/auth/application/AuthChangePassword
-    arguments: ['@Mmc.users.UserRepository']
+    arguments: ['@Mmc.users.IUserMySqlRepository']
 
   Apps.mmc.controllers.auth.AuthChangePasswordController:
     class: ../../controllers/auth/AuthChangePasswordController

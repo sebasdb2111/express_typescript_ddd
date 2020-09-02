@@ -1,12 +1,12 @@
 import UserNotExistException from '../../shared/domain/exceptions/UserNotExistsException';
-import {User}                from '../../users/domain/entity/User';
+import {UserMySqlEntity}                from '../../users/domain/entity/UserMySqlEntity';
 
 export default class UserNotExistGuard
 {
     private userId: number;
-    private user: User;
+    private user: UserMySqlEntity;
 
-    constructor(userId: number, user: User)
+    constructor(userId: number, user: UserMySqlEntity)
     {
         this.userId = userId;
         this.user   = user;
