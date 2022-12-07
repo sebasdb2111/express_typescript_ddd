@@ -66,7 +66,7 @@
     "cucumber": "^6.0.5",
     "faker": "^4.1.0",
     "jest": "^24.9.0",
-    "lint-staged": "8.2.1",
+    "lint-staged": "13.1.0",
     "prettier": "^1.16.4",
     "supertest": "^4.0.2",
     "ts-jest": "^24.1.0",
