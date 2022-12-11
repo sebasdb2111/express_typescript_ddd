@@ -34,7 +34,7 @@
     "copy": "^0.3.2",
     "cors": "^2.8.5",
     "errorhandler": "^1.5.1",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "express-session": "^1.17.0",
     "glob": "^7.1.6",
     "helmet": "^3.21.2",
